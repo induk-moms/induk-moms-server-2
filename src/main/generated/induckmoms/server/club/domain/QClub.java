@@ -19,6 +19,8 @@ public class QClub extends EntityPathBase<Club> {
 
     public static final QClub club = new QClub("club");
 
+    public final NumberPath<Integer> answer = createNumber("answer", Integer.class);
+
     public final StringPath description = createString("description");
 
     public final StringPath hashtags = createString("hashtags");
@@ -27,11 +29,13 @@ public class QClub extends EntityPathBase<Club> {
 
     public final StringPath name = createString("name");
 
+    public final StringPath problem = createString("problem");
+
     public final NumberPath<Long> ratingCount = createNumber("ratingCount", Long.class);
 
     public final StringPath simpleDescription = createString("simpleDescription");
 
-    public final NumberPath<Double> startRating = createNumber("startRating", Double.class);
+    public final NumberPath<Double> starRating = createNumber("starRating", Double.class);
 
     public final NumberPath<Long> userId = createNumber("userId", Long.class);
 

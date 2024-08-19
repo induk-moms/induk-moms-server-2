@@ -30,4 +30,8 @@ public class ClubReview {
 
     private Double rating;
     private String content;
+
+    public String getContents() {
+        return content;
+    }
 }
