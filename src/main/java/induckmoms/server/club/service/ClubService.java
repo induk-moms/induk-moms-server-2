@@ -1,19 +1,22 @@
 package induckmoms.server.club.service;
 
+import induckmoms.server.club.api.controller.dto.response.ClubReviewResponse;
 import induckmoms.server.club.domain.Club;
 import induckmoms.server.club.domain.dto.ClubSaveRequestDTO;
 import induckmoms.server.club.domain.respository.ClubJpaRepository;
+import induckmoms.server.mapping.clubReview.entity.ClubReview;
+import induckmoms.server.mapping.clubReview.repository.ClubReviewRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ClubService {
     private final ClubJpaRepository clubRepository;
+    private final ClubReviewRepository clubReviewRepository;
 
-    public ClubService(ClubJpaRepository clubRepository){
-        this.clubRepository = clubRepository;
-    }
 
     public void saveClub(ClubSaveRequestDTO clubSaveRequestDTO, Long userId) {
         clubRepository.save(clubSaveRequestDTO.toEntity(userId, 0.0, 0L));
@@ -60,5 +63,15 @@ public class ClubService {
         Club findClub = clubRepository.findById(clubId).orElseGet(null);
         if(findClub == null) return null;
         else return !findClub.getAnswer().equals(answer);
+    }
+
+    public List<ClubReviewResponse> findReviews(Long clubId) {
+        Club club = clubRepository.findById(clubId).orElseGet(null);
+        if(club == null) return null;
+
+        return clubReviewRepository.findAllByClub(club)
+                .stream()
+                .map(ClubReviewResponse::new)
+                .toList();
     }
 }
