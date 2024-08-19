@@ -54,8 +54,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}  # env 대신 secrets 직접 참조
 
-      - name: Rename appspec.yml to appspec.yml
-        run: mv appspec.yml appspec.yml
 
       - name: Upload to AWS S3
         run: |
