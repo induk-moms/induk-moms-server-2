@@ -19,6 +19,7 @@ public class ClaudeRecommendController {
     @GetMapping("/clubs")
     public ResponseEntity<?> recommendClubByHashTags(@RequestParam String hashTags) {
         ClaudeResponseMessage claudeResponseMessage = claudeRecommendService.extractRecommendedClubs(hashTags);
-        return new ResponseEntity<>(claudeResponseMessage.getContent().get(0).getText(), HttpStatus.OK);
+        String jsonResponse = claudeResponseMessage.getContent().get(0).getText();
+        return new ResponseEntity<>(claudeRecommendService.getRecommendClubInformation(jsonResponse), HttpStatus.OK);
     }
 }
