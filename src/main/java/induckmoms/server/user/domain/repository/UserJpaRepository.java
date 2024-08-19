@@ -10,7 +10,7 @@ import java.util.Optional;
 /**
  * UserJpaRepository는 User 엔티티에 대한 데이터 액세스 기능을 제공.
  */
-public interface UserJpaRepository extends JpaRepository<User, Integer> {
+public interface UserJpaRepository extends JpaRepository<User, Long> {
 
     /**
      * 사용자명과 상태를 기반으로 사용자를 찾음.

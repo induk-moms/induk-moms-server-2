@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-08-19T23:43:19+0900",
+    date = "2024-08-20T00:04:56+0900",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 21.0.4 (Azul Systems, Inc.)"
 )
 @Component
@@ -21,9 +21,7 @@ public class AuthMapperImpl implements AuthMapper {
 
         Long userId = null;
         if ( user != null ) {
-            if ( user.getId() != null ) {
-                userId = user.getId().longValue();
-            }
+            userId = user.getId();
         }
         String accessToken1 = null;
         accessToken1 = accessToken;
