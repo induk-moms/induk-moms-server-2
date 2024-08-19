@@ -9,6 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @Getter
+@Setter
 @Builder
 @Entity
 @Table(name = "club_tb")
@@ -28,7 +29,7 @@ public class Club {
     private String simpleDescription;
 
     @NotNull
-    private Double startRating;
+    private Double starRating;
 
     @NotNull
     private Long ratingCount;
@@ -37,5 +38,23 @@ public class Club {
     private Long userId;
 
     @NotNull
+    private String problem;
+
+    @NotNull
+    private Integer answer;
+
+    @NotNull
     private String hashtags;
+
+    public Club(String name, String description, String simpleDescription, Double startRating, Long ratingCount, Long userId, String problem, Integer answer, String hashtags) {
+        this.name = name;
+        this.description = description;
+        this.simpleDescription = simpleDescription;
+        this.starRating = startRating;
+        this.ratingCount = ratingCount;
+        this.userId = userId;
+        this.problem = problem;
+        this.answer = answer;
+        this.hashtags = hashtags;
+    }
 }
