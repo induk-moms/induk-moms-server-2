@@ -39,14 +39,14 @@ public class ClubController {
         else return BaseResponse.onSuccess(findClub);
     }
 
-    @GetMapping("/clubs/{clubId}/quizs")
+    @GetMapping("/{clubId}/quizs")
     public BaseResponse<String> getQuiz(@PathVariable(name = "clubId") Long clubId){
         String findQuiz = clubService.findQuiz(clubId);
         if(findQuiz == null) return BaseResponse.onFailure("404", "동아리가 존재하지 않습니다.", null);
         else return BaseResponse.onSuccess(findQuiz);
     }
 
-    @PostMapping("/clubs/{clubId}/quizs")
+    @PostMapping("/{clubId}/quizs")
     public BaseResponse<Boolean> solveQuiz(@PathVariable(name = "clubId") Long clubId, @RequestBody SolveQuiz answer){
         Boolean correctness = clubService.solveQuiz(clubId, answer.getAnswer());
         if(correctness == null) return BaseResponse.onFailure("400", "틀렸습니다.", false);
