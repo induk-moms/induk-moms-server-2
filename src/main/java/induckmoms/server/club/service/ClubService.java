@@ -28,7 +28,7 @@ public class ClubService {
     }
 
     public List<Club> findAllClub(){
-        return clubRepository.findAll();
+        return clubRepository.findALLByOrderByStarRatingDesc();
     }
 
     public void updateRating(String clubName, Double rating){

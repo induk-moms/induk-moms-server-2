@@ -5,6 +5,10 @@ import induckmoms.server.club.service.ClubService;
 import induckmoms.server.common.BaseResponse;
 import induckmoms.server.common.code.status.ErrorStatus;
 import induckmoms.server.common.exceptions.BaseException;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,12 +46,21 @@ public class ClubController {
         else return BaseResponse.onSuccess(findQuiz);
     }
 
-    @PostMapping("api/{clubId}/quizs")
-    public BaseResponse<Boolean> solveQuiz(@PathVariable(name = "clubId") Long clubId, @RequestBody Integer answer){
-        Boolean correctness = clubService.solveQuiz(clubId, answer);
+    @PostMapping("/clubs/{clubId}/quizs")
+    public BaseResponse<Boolean> solveQuiz(@PathVariable(name = "clubId") Long clubId, @RequestBody SolveQuiz answer){
+        Boolean correctness = clubService.solveQuiz(clubId, answer.getAnswer());
         if(correctness == null) return BaseResponse.onFailure("400", "틀렸습니다.", false);
         else return BaseResponse.onSuccess(true);
     }
+
+    @Getter
+    @Setter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    static class SolveQuiz{
+        Integer answer;
+    }
+
 
 
 }

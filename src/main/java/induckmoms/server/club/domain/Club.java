@@ -46,11 +46,11 @@ public class Club {
     @NotNull
     private String hashtags;
 
-    public Club(String name, String description, String simpleDescription, Double startRating, Long ratingCount, Long userId, String problem, Integer answer, String hashtags) {
+    public Club(String name, String description, String simpleDescription, Double starRating, Long ratingCount, Long userId, String problem, Integer answer, String hashtags) {
         this.name = name;
         this.description = description;
         this.simpleDescription = simpleDescription;
-        this.starRating = startRating;
+        this.starRating = starRating;
         this.ratingCount = ratingCount;
         this.userId = userId;
         this.problem = problem;
