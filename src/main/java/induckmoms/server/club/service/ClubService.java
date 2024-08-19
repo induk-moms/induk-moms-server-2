@@ -49,4 +49,16 @@ public class ClubService {
         }
         clubRepository.save(findClub);
     }
+
+    public String findQuiz(Long clubId){
+        Club findClub = clubRepository.findById(clubId).orElseGet(null);
+        if(findClub == null) return null;
+        else return findClub.getProblem();
+    }
+
+    public Boolean solveQuiz(Long clubId, Integer answer){
+        Club findClub = clubRepository.findById(clubId).orElseGet(null);
+        if(findClub == null) return null;
+        else return !findClub.getAnswer().equals(answer);
+    }
 }

@@ -90,6 +90,8 @@ public enum ErrorStatus implements BaseErrorCode {
     FAILED_TO_GET_GITHUB_REPOSITORIES(HttpStatus.BAD_REQUEST, "GITHUB4001", "깃허브 레포지토리 목록을 가져오는데 실패했습니다."),
     GITHUB_CLONE_ERROR(HttpStatus.BAD_REQUEST, "GITHUB4002", "깃허브 레포지토리 클론에 실패했습니다."),
 
+    CLUB_NO_CONTENTS_ERROR(HttpStatus.BAD_REQUEST, "CLUB4000", "클럽이 존재하지 않습니다."),
+
 
 
 
